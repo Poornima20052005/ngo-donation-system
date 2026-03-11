@@ -19,7 +19,7 @@ def donate(request, campaign_id):
     if request.method == "POST":
         amount = request.POST.get("amount")
 
-        donor = Donor.objects.first()
+        donor, created = Donor.objects.get_or_create(user=request.user)
 
         Donation.objects.create(
             donor=donor,
