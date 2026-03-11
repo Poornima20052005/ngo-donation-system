@@ -1,0 +1,7 @@
+<h1>Donate to {{ campaign.title }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    Amount: <input type="number" name="amount" required>
+    <button type="submit">Donate</button>
+</form>
+<a href="{% url 'home' %}">Back</a>

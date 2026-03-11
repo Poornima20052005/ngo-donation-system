@@ -1,0 +1,20 @@
+<h1>NGO Campaigns</h1>
+{% if user.is_authenticated %}
+<p>Welcome {{ user.username }} | <a href="{% url 'logout' %}">Logout</a> | <a href="{% url 'dashboard' %}">Dashboard</a></p>
+{% else %}
+<p><a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a></p>
+{% endif %}
+<ul>
+{% for campaign in campaigns %}
+  <li>
+    <h3>{{ campaign.title }}</h3>
+    <p>{{ campaign.description }}</p>
+    <p>Goal: ₹{{ campaign.goal_amount }} | Collected: ₹{{ campaign.collected_amount }}</p>
+    {% if user.is_authenticated %}
+      <a href="{% url 'donate' campaign.id %}">Donate</a>
+    {% else %}
+      <p>Login to donate</p>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,9 @@
+<h1>NGO Dashboard</h1>
+<p>Total Donations Collected: ₹{{ total_donations }}</p>
+<p>Top Campaign: {{ top_campaign.title }} - ₹{{ top_campaign.collected_amount }}</p>
+<ul>
+{% for campaign in campaigns %}
+  <li>{{ campaign.title }}: ₹{{ campaign.collected_amount }}/₹{{ campaign.goal_amount }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back</a>
